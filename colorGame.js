@@ -7,5 +7,17 @@ let colors = [
     "rgb(255, 0, 255)",
 ]
 
-var squares = document.querySelectorAll(".square");
+const squares = document.querySelectorAll('.square');
+let pickedColor = colors[3];
+const colorDisplay = document.getElementById('colorDisplay');
 
+colorDisplay.textContent = pickedColor;
+// loop each square to assign one color from the array colors 
+for(var i=0; i<squares.length; i++) {
+    // add initial colors to squares
+    squares[i].style.backgroundColor = colors[i];
+    // add click listeners to squares
+    squares[i].addEventListener('click', function() {
+        alert('clicked a square');
+    });
+}
