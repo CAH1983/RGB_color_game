@@ -6,6 +6,37 @@ const colorDisplay = document.getElementById('colorDisplay');
 const messageDisplay = document.querySelector('#message');
 const h1 = document.querySelector('h1');
 const resetButton = document.querySelector('#reset');
+const easyBtn = document.querySelector('#easyBtn');
+const hardBtn = document.querySelector('#hardBtn');
+
+easyBtn.addEventListener('click', function() {
+    hardBtn.classList.remove('selected');
+    easyBtn.classList.add('selected');
+    colors = generateRandomColors(3);
+    pickedColor = pickColor();
+    colorDisplay.textContent = pickedColor;
+    for (let i=0; i < squares.length; i++) {
+        if (colors[i]) {
+            squares[i].style.background = colors[i];
+        } else {
+            squares[i].style.background = 'none';
+        }
+    }
+});
+
+
+hardBtn.addEventListener('click', function() {
+    easyBtn.classList.remove('selected');
+    hardBtn.classList.add('selected');
+    colors = generateRandomColors(6);
+    pickedColor = pickColor();
+    colorDisplay.textContent = pickedColor;
+    for (let i = 0; i < squares.length; i++) {
+        squares[i].style.background = colors[i];
+        squares[i].style.background = 'block';
+    }
+});
+
 
 resetButton.addEventListener('click', function() {
     // generate all new colors
@@ -15,7 +46,7 @@ resetButton.addEventListener('click', function() {
     //change colorDisplya to match picked color
     colorDisplay.textContent = pickedColor;
     // change olors of squares
-    for(var i=0; i < squares.length; i++) {
+    for(let i=0; i < squares.length; i++) {
         squares[i].style.background = colors[i];
     }
 
@@ -24,7 +55,7 @@ resetButton.addEventListener('click', function() {
 
 colorDisplay.textContent = pickedColor;
 // loop each square to assign one color from the array colors 
-for(var i=0; i<squares.length; i++) {
+for(let i=0; i<squares.length; i++) {
     // add initial colors to squares
     squares[i].style.backgroundColor = colors[i];
     // add click listeners to squares
@@ -35,6 +66,7 @@ for(var i=0; i<squares.length; i++) {
         //compare color to pickedColor
         if(clickedColor === pickedColor) {
             messageDisplay.textContent = 'Correct!';
+            resetButton.textContent = 'Play again!';
             changeColors(clickedColor);
             h1.style.background = clickedColor;
         
@@ -47,7 +79,7 @@ for(var i=0; i<squares.length; i++) {
 
 function changeColors(color) {
     // loop through all squares
-    for(var i=0; i< squares.length; i++) {
+    for(let i=0; i< squares.length; i++) {
         // change each color to match given color
         squares[i].style.background = color;
     }
