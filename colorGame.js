@@ -4,8 +4,23 @@ const squares = document.querySelectorAll('.square');
 let pickedColor = pickColor();
 const colorDisplay = document.getElementById('colorDisplay');
 const messageDisplay = document.querySelector('#message');
-
 const h1 = document.querySelector('h1');
+const resetButton = document.querySelector('#reset');
+
+resetButton.addEventListener('click', function() {
+    // generate all new colors
+    colors = generateRandomColors(6);
+    // pick a new random color from array
+    pickedColor = pickColor();
+    //change colorDisplya to match picked color
+    colorDisplay.textContent = pickedColor;
+    // change olors of squares
+    for(var i=0; i < squares.length; i++) {
+        squares[i].style.background = colors[i];
+    }
+
+})
+
 
 colorDisplay.textContent = pickedColor;
 // loop each square to assign one color from the array colors 
