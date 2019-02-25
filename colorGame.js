@@ -5,6 +5,8 @@ let pickedColor = pickColor();
 const colorDisplay = document.getElementById('colorDisplay');
 const messageDisplay = document.querySelector('#message');
 
+const h1 = document.querySelector('h1');
+
 colorDisplay.textContent = pickedColor;
 // loop each square to assign one color from the array colors 
 for(var i=0; i<squares.length; i++) {
@@ -16,11 +18,12 @@ for(var i=0; i<squares.length; i++) {
         let clickedColor = this.style.backgroundColor;
         //compare color to pickedColor
         if(clickedColor === pickedColor) {
-            alert('correct');
+            messageDisplay.textContent = 'Correct!';
+            changeColors(clickedColor);
         
         } else {
             this.style.backgroundColor = '#232323';
-            messageDisplay.textContent = 'Try again'
+            messageDisplay.textContent = 'Try again';
         }
     });   
 }
@@ -39,15 +42,15 @@ function pickColor() {
 }
 
 function generateRandomColors(num) {
-
     // make an array
     let arr = [];
-    // add num random colors to array
+    // repeat num of times
     for (var i = 0; i < num; i++) {
-    // get random color and push into array
+        // get random color and push into array
+        arr.push(randomColor());
+    }
     // return that array
     return arr; 
-    }
 }
 
 function randomColor() {
