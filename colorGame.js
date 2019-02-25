@@ -16,10 +16,12 @@ for(var i=0; i<squares.length; i++) {
     squares[i].addEventListener('click', function() {
         // grab color of clicked sq
         let clickedColor = this.style.backgroundColor;
+        console.log(clickedColor, pickedColor);
         //compare color to pickedColor
         if(clickedColor === pickedColor) {
             messageDisplay.textContent = 'Correct!';
             changeColors(clickedColor);
+            h1.style.background = clickedColor;
         
         } else {
             this.style.backgroundColor = '#232323';
@@ -60,5 +62,5 @@ function randomColor() {
     let g = Math.floor(Math.random() * 256);
     // blue
     let b = Math.floor(Math.random() * 256);
-    return 'rgb(' + r + ',' + g + ',' +b + ')';
+    return 'rgb(' + r + ', ' + g + ', ' +b + ')';
 }
