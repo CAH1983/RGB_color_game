@@ -1,15 +1,9 @@
-let colors = [
-    "rgb(255, 0, 0)",
-    "rgb(255, 255, 0)",
-    "rgb(0, 255, 0)",
-    "rgb(0, 255, 255)",
-    "rgb(0, 0, 255)",
-    "rgb(255, 0, 255)",
-]
+let colors = generateRandomColors(6);
 
 const squares = document.querySelectorAll('.square');
-let pickedColor = colors[3];
+let pickedColor = pickColor();
 const colorDisplay = document.getElementById('colorDisplay');
+const messageDisplay = document.querySelector('#message');
 
 colorDisplay.textContent = pickedColor;
 // loop each square to assign one color from the array colors 
@@ -18,6 +12,50 @@ for(var i=0; i<squares.length; i++) {
     squares[i].style.backgroundColor = colors[i];
     // add click listeners to squares
     squares[i].addEventListener('click', function() {
-        alert('clicked a square');
-    });
+        // grab color of clicked sq
+        let clickedColor = this.style.backgroundColor;
+        //compare color to pickedColor
+        if(clickedColor === pickedColor) {
+            alert('correct');
+        
+        } else {
+            this.style.backgroundColor = '#232323';
+            messageDisplay.textContent = 'Try again'
+        }
+    });   
+}
+
+function changeColors(color) {
+    // loop through all squares
+    for(var i=0; i< squares.length; i++) {
+        // change each color to match given color
+        squares[i].style.background = color;
+    }
+}
+
+function pickColor() {
+    let random = Math.floor(Math.random() * colors.length);
+    return colors[random];
+}
+
+function generateRandomColors(num) {
+
+    // make an array
+    let arr = [];
+    // add num random colors to array
+    for (var i = 0; i < num; i++) {
+    // get random color and push into array
+    // return that array
+    return arr; 
+    }
+}
+
+function randomColor() {
+    // pick a 'red' from 0 to 255
+    let r = Math.floor(Math.random() * 256);
+    // green
+    let g = Math.floor(Math.random() * 256);
+    // blue
+    let b = Math.floor(Math.random() * 256);
+    return 'rgb(' + r + ',' + g + ',' +b + ')';
 }
