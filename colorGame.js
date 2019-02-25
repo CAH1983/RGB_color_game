@@ -1,5 +1,5 @@
-let numOfSquares = 6;
-let colors = generateRandomColors(numOfSquares);
+let numSquares = 6;
+let colors = generateRandomColors(numSquares);
 
 const squares = document.querySelectorAll('.square');
 let pickedColor = pickColor();
@@ -48,10 +48,13 @@ resetButton.addEventListener('click', function() {
     pickedColor = pickColor();
     //change colorDisplya to match picked color
     colorDisplay.textContent = pickedColor;
-    // change olors of squares
+    this.textContent = 'new colors';
+    // change colors of squares
     for(let i=0; i < squares.length; i++) {
         squares[i].style.background = colors[i];
     }
+    h1.style.background = 'steelblue';
+    messageDisplay.textContent = '';
 
 })
 
@@ -66,7 +69,7 @@ for(let i=0; i<squares.length; i++) {
         // grab color of clicked sq
         let clickedColor = this.style.backgroundColor;
         console.log(clickedColor, pickedColor);
-        //compare color to pickedColor
+        //compare color to pickedColor, if user wins / else
         if(clickedColor === pickedColor) {
             messageDisplay.textContent = 'Correct!';
             resetButton.textContent = 'Play again!';
