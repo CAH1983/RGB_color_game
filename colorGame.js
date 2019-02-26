@@ -11,16 +11,13 @@ const resetButton = document.querySelector('#reset');
 const modeButtons = document.querySelectorAll('.mode');
 
 for (let index = 0; index < modeButtons.length; index++) {
-    modeButtons[i].addEventListener('click', function() {
+    modeButtons[index].addEventListener('click', function() {
         modeButtons[0].classList.remove('selected');
         modeButtons[1].classList.remove('selected');
         this.classList.add('selected');
-        //if the button Easy is on, then number of squares will be 3
-            if(this.textContent === 'Easy') {
-                numSquares = 3;
-            } else {
-                numSquare = 6;
-            }
+        //if the button Easy is on, then number of squares will be 3; else number of sq will be 6
+        this.textContent === 'Easy' ? numSquares = 3 : numSquares = 6;
+
         reset();
 
         // figure out how many sqaures to show
@@ -43,7 +40,7 @@ function reset() {
     pickedColor = pickColor();
     //change colorDisplya to match picked color
     colorDisplay.textContent = pickedColor;
-    this.textContent = 'new colors';
+    resetButton.textContent = 'new colors';
     messageDisplay.textContent = '';
     // change colors of squares
     for (let i = 0; i < squares.length; i++) {
